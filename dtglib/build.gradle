@@ -1,8 +1,22 @@
 apply plugin: 'com.android.library'
 apply from: '../version.gradle'
 apply from: 'bintray.gradle'
+apply from: file('../gradle/gradle-mvn-push.gradle')
 
 group='com.github.kaltura'
+
+buildscript {
+    repositories {
+        jcenter()
+        maven {
+            url "http://mobile-maven-dev.crunchydev.com:8081/nexus/content/groups/public"
+        }
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:2.3.3'
+        classpath "org.jetbrains.dokka:dokka-android-gradle-plugin:0.9.14"
+    }
+}
 
 android {
     compileSdkVersion 25
