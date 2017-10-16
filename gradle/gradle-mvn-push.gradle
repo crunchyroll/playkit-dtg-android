@@ -1,6 +1,5 @@
 apply plugin: 'maven'
 apply plugin: 'signing'
-apply plugin: 'org.jetbrains.dokka-android'
 
 version = VERSION_NAME
 group = GROUP
@@ -39,14 +38,9 @@ uploadArchives {
         from android.sourceSets.main.java.srcDirs
     }
 
-    task javadocJar(type: Jar, dependsOn: 'dokka') {
+    task javadocJar(type: Jar) {
         classifier 'javadoc'
         from "$buildDir/javadoc"
-    }
-
-    dokka {
-        outputFormat 'javadoc'
-        outputDirectory "$buildDir/javadoc"
     }
 
     artifacts {
